@@ -57,4 +57,11 @@ public enum EnumHoneyDrop implements ItemOverlay.IOverlayInfo {
 	public boolean isSecret() {
 		return secret;
 	}
+
+	public static EnumHoneyDrop get(int meta){
+		if(meta < 0 || meta >= VALUES.length){
+			meta = 0;
+		}
+		return VALUES[meta];
+	}
 }

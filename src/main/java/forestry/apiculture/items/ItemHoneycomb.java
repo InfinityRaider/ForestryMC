@@ -42,7 +42,7 @@ public class ItemHoneycomb extends ItemForestryMultiPass {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		EnumHoneyComb honeyComb = EnumHoneyComb.VALUES[stack.getItemDamage()];
+		EnumHoneyComb honeyComb = EnumHoneyComb.get(stack.getItemDamage());
 		return super.getUnlocalizedName(stack) + "." + honeyComb.name;
 	}
 
@@ -60,7 +60,7 @@ public class ItemHoneycomb extends ItemForestryMultiPass {
 	@Override
 	public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List itemList) {
 		for (int i = 0; i < EnumHoneyComb.VALUES.length; i++) {
-			EnumHoneyComb honeyComb = EnumHoneyComb.VALUES[i];
+			EnumHoneyComb honeyComb = EnumHoneyComb.get(i);
 			if (!honeyComb.isSecret() || Config.isDebug) {
 				itemList.add(new ItemStack(this, 1, i));
 			}
@@ -70,7 +70,7 @@ public class ItemHoneycomb extends ItemForestryMultiPass {
 	private static EnumHoneyComb getRandomCombType(Random random, boolean includeSecret) {
 		List<EnumHoneyComb> validCombs = new ArrayList<>(EnumHoneyComb.VALUES.length);
 		for (int i = 0; i < EnumHoneyComb.VALUES.length; i++) {
-			EnumHoneyComb honeyComb = EnumHoneyComb.VALUES[i];
+			EnumHoneyComb honeyComb = EnumHoneyComb.get(i);
 			if (!honeyComb.isSecret() || includeSecret) {
 				validCombs.add(honeyComb);
 			}
